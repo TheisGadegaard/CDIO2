@@ -56,6 +56,7 @@ public class MainController implements IMainController, ISocketObserver, IWeight
 		case B:
 			try{
 				weight = Double.parseDouble(message.getMessage());
+				weightController.showMessagePrimaryDisplay(weight+"kg");
 				break;
 			}
 			catch(NumberFormatException e){
