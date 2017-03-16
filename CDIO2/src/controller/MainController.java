@@ -84,8 +84,7 @@ public class MainController implements IMainController, ISocketObserver, IWeight
 			weightController.showMessagePrimaryDisplay(total.toString());
 			break;
 		case T:
-			tarWeight = weight;
-			weightController.showMessagePrimaryDisplay(total.toString());
+			tara();
 			break;
 		case DW:
 			weightController.showMessagePrimaryDisplay(message.getMessage());
@@ -151,4 +150,11 @@ public class MainController implements IMainController, ISocketObserver, IWeight
 
 	}
 
+	public void tara(){
+		tarWeight = weight;
+		weightController.showMessagePrimaryDisplay(total.toString());
+	}
+	
+	
+	
 }
