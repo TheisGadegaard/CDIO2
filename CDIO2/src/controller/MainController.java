@@ -72,7 +72,7 @@ public class MainController implements IMainController, ISocketObserver, IWeight
 			weightController.showMessagePrimaryDisplay(message.getMessage()); 
 			break;
 		case Q:
-			System.exit(0);
+			quit();
 			break;
 		case RM204:
 			break;
@@ -126,6 +126,7 @@ public class MainController implements IMainController, ISocketObserver, IWeight
 		case SOFTBUTTON:
 			break;
 		case TARA:
+			tara();
 			break;
 		case TEXT:
 			break;
@@ -134,6 +135,7 @@ public class MainController implements IMainController, ISocketObserver, IWeight
 		case C:
 			break;
 		case EXIT:
+			quit();
 			break;
 		case SEND:
 			if (keyState.equals(KeyState.K4) || keyState.equals(KeyState.K3) ){
@@ -155,6 +157,8 @@ public class MainController implements IMainController, ISocketObserver, IWeight
 		weightController.showMessagePrimaryDisplay(total.toString());
 	}
 	
-	
+	public void quit(){
+		System.exit(0);
+	}
 	
 }
