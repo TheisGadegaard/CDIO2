@@ -61,6 +61,7 @@ public class MainController implements IMainController, ISocketObserver, IWeight
 				} else{
 					weight = weight + Double.parseDouble(message.getMessage());
 					weightController.showMessagePrimaryDisplay(weight+"kg");
+					weightController.showMessageSecondaryDisplay("Unmodified total weight:");
 				} 
 				break;
 			}
