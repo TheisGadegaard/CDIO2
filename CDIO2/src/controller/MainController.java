@@ -56,7 +56,7 @@ public class MainController implements IMainController, ISocketObserver, IWeight
 		switch (message.getType()) {
 		case B:
 			try{
-				if (Double.parseDouble(message.getMessage()) < -(weight + tarWeight)){
+				if (Double.parseDouble(message.getMessage()) < -weight){
 					weightController.showMessageSecondaryDisplay("Cant withdraw more weight than currently on weight");
 				} else{
 					weight = weight + Double.parseDouble(message.getMessage());
