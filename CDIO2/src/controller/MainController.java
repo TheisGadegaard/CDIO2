@@ -18,6 +18,8 @@ public class MainController implements IMainController, ISocketObserver, IWeight
 	private ISocketController socketHandler;
 	private IWeightInterfaceController weightController;
 	private KeyState keyState = KeyState.K1;
+	
+	private Integer weight;
 
 	public MainController(ISocketController socketHandler, IWeightInterfaceController weightInterfaceController) {
 		this.init(socketHandler, weightInterfaceController);
@@ -51,6 +53,7 @@ public class MainController implements IMainController, ISocketObserver, IWeight
 	public void notify(SocketInMessage message) {
 		switch (message.getType()) {
 		case B:
+			weight = Integer.parseInt(message.getMessage());
 			break;
 		case D:
 			weightController.showMessagePrimaryDisplay(message.getMessage()); 
@@ -62,6 +65,8 @@ public class MainController implements IMainController, ISocketObserver, IWeight
 		case RM208:
 			break;
 		case S:
+			weightController.showMessageSecondaryDisplay("The current weight is:");
+			weightController.showMessagePrimaryDisplay(weight.toString());
 			break;
 		case T:
 			
