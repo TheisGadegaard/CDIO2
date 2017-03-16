@@ -82,7 +82,7 @@ public class SocketController implements ISocketController {
 					//TODO implement
 					break;
 				case "T": // Tare the weight
-					//TODO implement
+					notifyObservers(new SocketInMessage(SocketMessageType.T, ""));
 					break;
 				case "S": // Request the current load
 					notifyObservers(new SocketInMessage(SocketMessageType.S, ""));
