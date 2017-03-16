@@ -85,7 +85,7 @@ public class SocketController implements ISocketController {
 					//TODO implement
 					break;
 				case "S": // Request the current load
-					//TODO implement
+					notifyObservers(new SocketInMessage(SocketMessageType.S, inLine.split(" ")[1]));
 					break;
 				case "K":
 					if (inLine.split(" ").length>1){
@@ -93,7 +93,7 @@ public class SocketController implements ISocketController {
 					}
 					break;
 				case "B": // Set the load
-					//TODO implement
+					notifyObservers(new SocketInMessage(SocketMessageType.B, inLine.split(" ")[1]));
 					break;
 				case "Q": // Quit
 					//TODO implement
