@@ -46,6 +46,7 @@ public class MainController implements IMainController, ISocketObserver, IWeight
 	}
 
 	//Listening for socket input
+	//When we notify observers, this is the controller that gets the input
 	@Override
 	public void notify(SocketInMessage message) {
 		switch (message.getType()) {
@@ -63,13 +64,16 @@ public class MainController implements IMainController, ISocketObserver, IWeight
 		case S:
 			break;
 		case T:
+			
 			break;
 		case DW:
+			weightController.showMessagePrimaryDisplay("");
 			break;
 		case K:
 			handleKMessage(message);
 			break;
 		case P111:
+			weightController.showMessageSecondaryDisplay(message.getMessage());
 			break;
 		}
 

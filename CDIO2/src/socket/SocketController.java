@@ -74,9 +74,11 @@ public class SocketController implements ISocketController {
 					notifyObservers(new SocketInMessage(SocketMessageType.D, inLine.split(" ")[1])); 			
 					break;
 				case "DW": //Clear primary display
-					//TODO implement
+					notifyObservers(new SocketInMessage(SocketMessageType.DW, inLine.split(" ")[1]));
+					//TODO implement (The logic is written in MainController.notify();
 					break;
 				case "P111": //Show something in secondary display
+					notifyObservers(new SocketInMessage(SocketMessageType.P111, inLine.split(" ")[1]));
 					//TODO implement
 					break;
 				case "T": // Tare the weight
