@@ -19,7 +19,7 @@ public class MainController implements IMainController, ISocketObserver, IWeight
 	private IWeightInterfaceController weightController;
 	private KeyState keyState = KeyState.K1;
 	
-	private Double weight;
+	private Double weight = 0.0;
 
 	public MainController(ISocketController socketHandler, IWeightInterfaceController weightInterfaceController) {
 		this.init(socketHandler, weightInterfaceController);
