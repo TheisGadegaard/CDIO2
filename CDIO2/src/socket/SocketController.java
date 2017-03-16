@@ -70,16 +70,13 @@ public class SocketController implements ISocketController {
 					//TODO implement logic for RM command
 					break;
 				case "D":// Display a message in the primary display
-					//TODO Refactor to make sure that faulty messages doesn't break the system
 					notifyObservers(new SocketInMessage(SocketMessageType.D, inLine.split(" ")[1])); 			
 					break;
 				case "DW": //Clear primary display
 					notifyObservers(new SocketInMessage(SocketMessageType.DW, ""));
-					//TODO implement (The logic is written in MainController.notify();
 					break;
 				case "P111": //Show something in secondary display
 					notifyObservers(new SocketInMessage(SocketMessageType.P111, inLine.split(" ")[1]));
-					//TODO implement
 					break;
 				case "T": // Tare the weight
 					notifyObservers(new SocketInMessage(SocketMessageType.T, ""));
