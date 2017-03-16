@@ -96,7 +96,7 @@ public class SocketController implements ISocketController {
 					notifyObservers(new SocketInMessage(SocketMessageType.B, inLine.split(" ")[1]));
 					break;
 				case "Q": // Quit
-					//TODO implement
+					notifyObservers(new SocketInMessage(SocketMessageType.Q, ""));
 					break;
 				default: //Something went wrong?
 					//TODO implement
