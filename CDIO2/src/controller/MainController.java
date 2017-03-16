@@ -53,8 +53,14 @@ public class MainController implements IMainController, ISocketObserver, IWeight
 	public void notify(SocketInMessage message) {
 		switch (message.getType()) {
 		case B:
-			weight = Double.parseDouble(message.getMessage());
-			break;
+			try{
+				weight = Double.parseDouble(message.getMessage());
+				break;
+			}
+			catch(NumberFormatException e){
+				weightController.showMessageSecondaryDisplay("Error: Wrong format " + e.getMessage());
+				break;
+			}
 		case D:
 			weightController.showMessagePrimaryDisplay(message.getMessage()); 
 			break;

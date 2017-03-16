@@ -85,7 +85,7 @@ public class SocketController implements ISocketController {
 					//TODO implement
 					break;
 				case "S": // Request the current load
-					notifyObservers(new SocketInMessage(SocketMessageType.S, inLine.split(" ")[1]));
+					notifyObservers(new SocketInMessage(SocketMessageType.S, ""));
 					break;
 				case "K":
 					if (inLine.split(" ").length>1){
