@@ -76,7 +76,7 @@ public class MainController implements IMainController, ISocketObserver, IWeight
 			weightController.showMessagePrimaryDisplay(weight.toString());
 			break;
 		case T:
-			tarWeight = tarWeight + weight;
+			tarWeight = weight;
 			weight = weight - tarWeight;
 			break;
 		case DW:
