@@ -155,7 +155,7 @@ public class MainController implements IMainController, ISocketObserver, IWeight
 	@Override
 	public void notifyWeightChange(double newWeight) {
 		this.weight = newWeight; //Set the weight to be equal to the new weight
-		weightController.showMessagePrimaryDisplay(weight+"kg"); //Print this to the GUI
+		weightController.showMessagePrimaryDisplay(weight-tarWeight+"kg"); //Print this to the GUI
 
 	}
 
