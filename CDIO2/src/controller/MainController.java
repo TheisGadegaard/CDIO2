@@ -155,6 +155,7 @@ public class MainController implements IMainController, ISocketObserver, IWeight
 		case C:
 			numbers = new ArrayList<Character>();
 			numbersPointer = 0;
+			System.out.println("C");
 			break;
 		case EXIT:
 			quit();
