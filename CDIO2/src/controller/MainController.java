@@ -132,6 +132,11 @@ public class MainController implements IMainController, ISocketObserver, IWeight
 		case TEXT:
 			break;
 		case ZERO:
+			weight = 0.0;
+			tarWeight = 0.0;
+			total = 0.0;
+			weightController.showMessagePrimaryDisplay(total.toString());
+			weightController.showMessageSecondaryDisplay("");
 			break;
 		case C:
 			break;
