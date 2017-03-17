@@ -96,7 +96,7 @@ public class SocketController implements ISocketController {
 					notifyObservers(new SocketInMessage(SocketMessageType.Q, ""));
 					break;
 				default: //Something went wrong?
-					//TODO implement
+					System.err.println("Command not found");
 					break;
 				}
 			}
