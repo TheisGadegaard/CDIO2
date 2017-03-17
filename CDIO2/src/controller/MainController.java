@@ -177,10 +177,11 @@ public class MainController implements IMainController, ISocketObserver, IWeight
 				socketHandler.sendMessage(new SocketOutMessage(numbers.toString()));
 				 numbers = new ArrayList<Character>();
 				 numbersPointer = 0;
-				 weightController.showMessageSecondaryDisplay("");
+				 weightController.showMessageSecondaryDisplay("You sent the numbers" + numbers.toString());
 			}
 			else{ 
-				System.out.println("what happened?");
+				weightController.showMessageSecondaryDisplay("No command was expecting an input. Input discarded.");
+				System.out.println("No command was expecting an input. Input discarded.");
 			}
 			allowCommands = true;
 			break;
