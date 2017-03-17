@@ -28,6 +28,7 @@ public class MainController implements IMainController, ISocketObserver, IWeight
 	private List<Character> numbers = new ArrayList<Character>();
 	private int numbersPointer = 0;
 	private String numberMessage;
+	private boolean allowCommands = true;
 	
 	public MainController(ISocketController socketHandler, IWeightInterfaceController weightInterfaceController) {
 		this.init(socketHandler, weightInterfaceController);
@@ -59,50 +60,56 @@ public class MainController implements IMainController, ISocketObserver, IWeight
 	//When we notify observers, this is the controller that gets the input
 	@Override
 	public void notify(SocketInMessage message) {
-		switch (message.getType()) {
-		case B:
-			try{
-				if (Double.parseDouble(message.getMessage()) < -weight){
-					weightController.showMessageSecondaryDisplay("Cant withdraw more weight than currently on weight");
-				} else{
-					weight = weight + Double.parseDouble(message.getMessage());
-					weightController.showMessagePrimaryDisplay(weight+"kg");
-					weightController.showMessageSecondaryDisplay("Unmodified total weight:");
-				} 
+		if(allowCommands){
+			switch (message.getType()) {
+			case B:
+				try{
+					if (Double.parseDouble(message.getMessage()) < -weight){
+						weightController.showMessageSecondaryDisplay("Cant withdraw more weight than currently on weight");
+					} else{
+						weight = weight + Double.parseDouble(message.getMessage());
+						weightController.showMessagePrimaryDisplay(weight+"kg");
+						weightController.showMessageSecondaryDisplay("Unmodified total weight:");
+					} 
+					break;
+				}
+				catch(NumberFormatException e){
+					weightController.showMessageSecondaryDisplay("Error: Wrong format " + e.getMessage());
+					break;
+				}
+			case D:
+				weightController.showMessagePrimaryDisplay(message.getMessage()); 
+				break;
+			case Q:
+				quit();
+				break;
+			case RM204: //Expects an integer reply and does not have to be implemented
+				break;
+			case RM208: //Expects a string as a reply 
+				weightController.showMessageSecondaryDisplay("Enter your operator ID: ");
+				allowCommands = false;
+				break;
+			case S:
+				total = weight - tarWeight;
+				weightController.showMessageSecondaryDisplay("The current weight is:");
+				weightController.showMessagePrimaryDisplay(total.toString());
+				break;
+			case T:
+				tara();
+				break;
+			case DW:
+				weightController.showMessagePrimaryDisplay(message.getMessage());
+				break;
+			case K:
+				handleKMessage(message);
+				break;
+			case P111:
+				weightController.showMessageSecondaryDisplay(message.getMessage());
 				break;
 			}
-			catch(NumberFormatException e){
-				weightController.showMessageSecondaryDisplay("Error: Wrong format " + e.getMessage());
-				break;
-			}
-		case D:
-			weightController.showMessagePrimaryDisplay(message.getMessage()); 
-			break;
-		case Q:
-			quit();
-			break;
-		case RM204: //Expects an integer reply and does not have to be implemented
-			break;
-		case RM208: //Expects a string as a reply 
-			weightController.showMessageSecondaryDisplay("Enter your operator ID: ");
-			break;
-		case S:
-			total = weight - tarWeight;
-			weightController.showMessageSecondaryDisplay("The current weight is:");
-			weightController.showMessagePrimaryDisplay(total.toString());
-			break;
-		case T:
-			tara();
-			break;
-		case DW:
-			weightController.showMessagePrimaryDisplay(message.getMessage());
-			break;
-		case K:
-			handleKMessage(message);
-			break;
-		case P111:
-			weightController.showMessageSecondaryDisplay(message.getMessage());
-			break;
+		}
+		else{
+			weightController.showMessageSecondaryDisplay("RM20 is currently active. Send a number before proceeding.");
 		}
 
 	}
@@ -173,6 +180,7 @@ public class MainController implements IMainController, ISocketObserver, IWeight
 			else{ 
 				System.out.println("what happened?");
 			}
+			allowCommands = true;
 			break;
 		}
 
