@@ -33,7 +33,7 @@ public class SocketController implements ISocketController {
 		if (outStream!=null){
 			//TODO send something over the socket! 
 		} else {
-			//TODO maybe tell someone that connection is closed?
+			System.err.println("Connection closed"); //Tells the user that to connection with the socket could not be made
 		}
 	}
 
