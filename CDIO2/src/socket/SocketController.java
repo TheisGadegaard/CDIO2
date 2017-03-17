@@ -45,7 +45,7 @@ public class SocketController implements ISocketController {
 				waitForConnections(listeningSocket); 	
 			}		
 		} catch (IOException e1) {
-			// TODO Maybe notify MainController?
+			notifyObservers(new SocketInMessage(SocketMessageType.P111, "Something went wrong"));
 			e1.printStackTrace();
 		} 
 
