@@ -101,7 +101,7 @@ public class SocketController implements ISocketController {
 				}
 			}
 		} catch (IOException e) {
-			//TODO maybe notify mainController?
+			notifyObservers(new SocketInMessage(SocketMessageType.P111, "Something went wrong"));
 			e.printStackTrace();
 		}
 	}
