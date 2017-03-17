@@ -60,7 +60,7 @@ public class MainController implements IMainController, ISocketObserver, IWeight
 					weightController.showMessageSecondaryDisplay("Cant withdraw more weight than currently on weight");
 				} else{
 					weight = weight + Double.parseDouble(message.getMessage());
-					weightController.showMessagePrimaryDisplay(weight+"kg");
+					weightController.showMessagePrimaryDisplay(weight-weight%0.001+"kg");
 					weightController.showMessageSecondaryDisplay("Unmodified total weight:");
 				} 
 				break;
