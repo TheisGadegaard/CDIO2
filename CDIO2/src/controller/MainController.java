@@ -83,7 +83,6 @@ public class MainController implements IMainController, ISocketObserver, IWeight
 							idCounter++; batchCounter++;
 						}
 						
-						
 					} 
 					break;
 				}
