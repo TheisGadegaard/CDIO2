@@ -84,6 +84,7 @@ public class MainController implements IMainController, ISocketObserver, IWeight
 		case RM204: //Expects an integer reply and does not have to be implemented
 			break;
 		case RM208: //Expects a string as a reply 
+			weightController.showMessageSecondaryDisplay("Enter your operator ID: ");
 			break;
 		case S:
 			total = weight - tarWeight;
