@@ -179,9 +179,9 @@ public class MainController implements IMainController, ISocketObserver, IWeight
 			}
 			else if(keyState.equals(KeyState.K4)){
 				socketHandler.sendMessage(new SocketOutMessage(numbers.toString()));
+				 weightController.showMessageSecondaryDisplay("You sent the numbers: " + numbers.toString());
 				 numbers = new ArrayList<Character>();
 				 numbersPointer = 0;
-				 weightController.showMessageSecondaryDisplay("You sent the numbers" + numbers.toString());
 			}
 			else{ 
 				weightController.showMessageSecondaryDisplay("No command was expecting an input. Input discarded.");
