@@ -161,13 +161,18 @@ public class MainController implements IMainController, ISocketObserver, IWeight
 			quit();
 			break;
 		case SEND:
-			if (keyState.equals(KeyState.K4) || keyState.equals(KeyState.K3) ){
+			if (/*keyState.equals(KeyState.K4) ||*/ keyState.equals(KeyState.K3) ){
 				socketHandler.sendMessage(new SocketOutMessage("K A 3"));
 			}
-			//Code for sending/resetting numbers
-			 numbers = new ArrayList<Character>();
-			 numbersPointer = 0;
-			 weightController.showMessageSecondaryDisplay("");
+			else if(keyState.equals(KeyState.K4)){
+				socketHandler.sendMessage(new SocketOutMessage(numbers.toString()));
+				 numbers = new ArrayList<Character>();
+				 numbersPointer = 0;
+				 weightController.showMessageSecondaryDisplay("");
+			}
+			else{ 
+				System.out.println("what happened?");
+			}
 			break;
 		}
 
