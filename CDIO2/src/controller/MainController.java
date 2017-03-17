@@ -29,6 +29,9 @@ public class MainController implements IMainController, ISocketObserver, IWeight
 	private int numbersPointer = 0;
 	private String numberMessage;
 	private boolean allowCommands = true;
+	private int[] id = new int[88];
+	private int[] batch = new int[8999];
+	private int idCounter = 11, batchCounter = 1000;
 	
 	public MainController(ISocketController socketHandler, IWeightInterfaceController weightInterfaceController) {
 		this.init(socketHandler, weightInterfaceController);
@@ -70,6 +73,15 @@ public class MainController implements IMainController, ISocketObserver, IWeight
 						weight = weight + Double.parseDouble(message.getMessage());
 						weightController.showMessagePrimaryDisplay(weight+"kg");
 						weightController.showMessageSecondaryDisplay("Unmodified total weight:");
+						id[idCounter - 11] = idCounter;
+						batch[batchCounter - 1000] = batchCounter;
+						if (idCounter > 88){ idCounter = 11; }
+						else if (batchCounter > 9999){ batchCounter = 1000; } 
+						else if (idCounter < 99 || batchCounter < 9999){
+							idCounter++; batchCounter++;
+						}
+						
+						
 					} 
 					break;
 				}
