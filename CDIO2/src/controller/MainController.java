@@ -32,6 +32,10 @@ public class MainController implements IMainController, ISocketObserver, IWeight
 	private String numberMessage;
 	private boolean allowCommands = true;
 	
+	//Hardcoded batch and id
+	private int idN = 12, batchN = 1234;
+	private String idS = "Anders And", batchS = "Salt";
+	
 	public MainController(ISocketController socketHandler, IWeightInterfaceController weightInterfaceController) {
 		this.init(socketHandler, weightInterfaceController);
 	}
