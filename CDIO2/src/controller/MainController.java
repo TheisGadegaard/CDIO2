@@ -1,8 +1,5 @@
 package controller;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import socket.ISocketController;
 import socket.ISocketObserver;
 import socket.SocketInMessage;
@@ -25,10 +22,7 @@ public class MainController implements IMainController, ISocketObserver, IWeight
 	private double weight = 0.0;
 	private double tarWeight = 0.0;
 	private Double total = 0.0;
-	private List<Character> numbers = new ArrayList<Character>();
-	private int numbersPointer = 0;
-	private String numberMessage;
-	
+
 	public MainController(ISocketController socketHandler, IWeightInterfaceController weightInterfaceController) {
 		this.init(socketHandler, weightInterfaceController);
 	}
@@ -44,11 +38,11 @@ public class MainController implements IMainController, ISocketObserver, IWeight
 		if (socketHandler!=null && weightController!=null){
 			//Makes this controller interested in messages from the socket
 			socketHandler.registerObserver(this);
-			//Starts socketHandler in own thread
+			//Starts socketHandler in it's own thread
 			new Thread(socketHandler).start();
 			//weightController setup
 			weightController.registerObserver(this);
-			//Starts weightController in own thread
+			//Starts weightController in it's own thread
 			new Thread(weightController).start();
 		} else {
 			System.err.println("No controllers injected!");
@@ -129,7 +123,6 @@ public class MainController implements IMainController, ISocketObserver, IWeight
 	@Override
 	public void notifyKeyPress(KeyPress keyPress) {
 		//TODO implement logic for handling input from ui
-		
 		switch (keyPress.getType()) {
 		case SOFTBUTTON:
 			break;
@@ -137,13 +130,6 @@ public class MainController implements IMainController, ISocketObserver, IWeight
 			tara();
 			break;
 		case TEXT:
-			numbers.add(keyPress.getCharacter());
-			numbersPointer++;
-			numberMessage = "";
-			for(int i = 0; i<numbersPointer; i++){
-				numberMessage += numbers.get(i);
-			}
-			weightController.showMessageSecondaryDisplay(numberMessage);
 			break;
 		case ZERO:
 			weight = 0.0;
@@ -153,9 +139,6 @@ public class MainController implements IMainController, ISocketObserver, IWeight
 			weightController.showMessageSecondaryDisplay(""); 
 			break;
 		case C:
-			numbers = new ArrayList<Character>();
-			numbersPointer = 0;
-			System.out.println("C");
 			break;
 		case EXIT:
 			quit();
@@ -164,10 +147,6 @@ public class MainController implements IMainController, ISocketObserver, IWeight
 			if (keyState.equals(KeyState.K4) || keyState.equals(KeyState.K3) ){
 				socketHandler.sendMessage(new SocketOutMessage("K A 3"));
 			}
-			//Code for sending/resetting numbers
-			numbers = new ArrayList<Character>();
-			numbersPointer = 0;
-			weightController.showMessageSecondaryDisplay("");
 			break;
 		}
 
