@@ -167,6 +167,7 @@ public class MainController implements IMainController, ISocketObserver, IWeight
 			//Code for sending/resetting numbers
 			numbers = new ArrayList<Character>();
 			numbersPointer = 0;
+			weightController.showMessageSecondaryDisplay("");
 			break;
 		}
 
