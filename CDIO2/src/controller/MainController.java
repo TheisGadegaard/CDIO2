@@ -164,6 +164,9 @@ public class MainController implements IMainController, ISocketObserver, IWeight
 			if (keyState.equals(KeyState.K4) || keyState.equals(KeyState.K3) ){
 				socketHandler.sendMessage(new SocketOutMessage("K A 3"));
 			}
+			//Code for sending/resetting numbers
+			numbers = new ArrayList<Character>();
+			numbersPointer = 0;
 			break;
 		}
 
