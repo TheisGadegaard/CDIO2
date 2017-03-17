@@ -3,7 +3,7 @@ package socket;
 public class SocketOutMessage {
 
 	private String message;
-	//TODO Add more ?
+	private boolean commandStatus;
 
 	public SocketOutMessage(String message) {
 		this.message = message;
@@ -11,6 +11,10 @@ public class SocketOutMessage {
 	
 	public String getMessage() {
 		return message;
+	}
+	
+	public boolean commandStatus(){
+		return commandStatus;
 	}
 
 

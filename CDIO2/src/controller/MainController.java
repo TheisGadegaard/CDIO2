@@ -209,4 +209,8 @@ public class MainController implements IMainController, ISocketObserver, IWeight
 		System.exit(0);
 	}
 	
+	public boolean getCommandStatus(){
+		return allowCommands;
+	}
+	
 }
