@@ -144,7 +144,7 @@ public class MainController implements IMainController, ISocketObserver, IWeight
 				 numberMessage += numbers.get(i);
 			 }
 			 weightController.showMessageSecondaryDisplay(numberMessage);
-			break;
+			break; 
 		case ZERO:
 			weight = 0.0;
 			tarWeight = 0.0;
