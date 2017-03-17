@@ -77,7 +77,7 @@ public class MainController implements IMainController, ISocketObserver, IWeight
 			break;
 		case RM204: //Expects an integer reply and does not have to be implemented
 			break;
-		case RM208: //Expects a string as a reply
+		case RM208: //Expects a string as a reply 
 			break;
 		case S:
 			total = weight - tarWeight;
