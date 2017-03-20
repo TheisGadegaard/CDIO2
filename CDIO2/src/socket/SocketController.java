@@ -4,6 +4,7 @@ import java.io.BufferedReader;
 import java.io.DataOutputStream;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.io.PrintWriter;
 import java.net.ServerSocket;
 import java.net.Socket;
 import java.util.HashSet;
@@ -32,6 +33,9 @@ public class SocketController implements ISocketController {
 	public void sendMessage(SocketOutMessage message) {
 		if (outStream!=null){
 			//TODO send something over the socket! 
+			PrintWriter out = new PrintWriter(outStream);
+			out.println(message.getMessage());
+			out.flush();
 		} else {
 			System.err.println("Connection closed"); //Tells the user that to connection with the socket could not be made
 		}
@@ -67,6 +71,7 @@ public class SocketController implements ISocketController {
 				if (inLine==null) break;
 				switch (inLine.split(" ")[0]) {
 				case "RM20": // Display a message in the secondary display and wait for response
+					//Depending on the number after RM20 4 or 8, notify with either RM204 or RM208
 					notifyObservers(new SocketInMessage(SocketMessageType.RM208, ""));
 					break;
 				case "D":// Display a message in the primary display

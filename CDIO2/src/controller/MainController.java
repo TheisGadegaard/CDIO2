@@ -85,6 +85,7 @@ public class MainController implements IMainController, ISocketObserver, IWeight
 				}
 			case D:
 				weightController.showMessagePrimaryDisplay(message.getMessage()); 
+				socketHandler.sendMessage(new SocketOutMessage("D A"));
 				break;
 			case Q:
 				quit();
